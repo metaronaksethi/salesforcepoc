@@ -41,18 +41,19 @@ const Auth = () => {
         "token_type": "Bearer",
         "issued_at": "1676113911346"
     }
-      console.log("options >>>", JSON.stringify(options));
       await axios(options)
-        .then((response) => {debugger
+        .then((response) => {
           console.log("response>>>>", response);
-          sessionStorage.setItem('data', JSON.stringify(sample))
-          sessionStorage.setItem('token', sample.access_token)
+          console.log("response.data>>>>", JSON.stringify(response.data));
+          console.log("response.data.access_token>>>>", JSON.stringify(response.data.access_token));
+          sessionStorage.setItem('data', JSON.stringify(response.data))
+          sessionStorage.setItem('token', response.data.access_token)
           navigate('/csv')
         })
-        .catch((e) => {debugger
-          sessionStorage.setItem('data', JSON.stringify(sample))
-          sessionStorage.setItem('token', sample.access_token)
-          navigate('/csv')
+        .catch((e) => {
+          // sessionStorage.setItem('data', JSON.stringify(sample))
+          // sessionStorage.setItem('token', sample.access_token)
+          // navigate('/csv')
           console.log("e >>>", e);
         });
     };
