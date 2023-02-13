@@ -14,7 +14,7 @@ const Auth = () => {
   useEffect(() => {
     setCode(decodeURIComponent(searchParams.get("code")));
     const getToken = async () => {
-      const baseURL = "https://login.salesforce.com/services/oauth2/token";
+      const baseURL = "https://resilient-narwhal-ue20v8-dev-ed.trailblaze.my.salesforce.com/services/oauth2/token";
       let body = {
         grant_type: "authorization_code",
         code:code,
