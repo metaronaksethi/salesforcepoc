@@ -14,10 +14,10 @@ const Auth = () => {
   useEffect(() => {
     setCode(decodeURIComponent(searchParams.get("code")));
     const getToken = async () => {
-      const baseURL = "https://login.salesforce.com/services/oauth2/token";
+      const baseURL = "https://resilient-narwhal-ue20v8-dev-ed.trailblaze.lightning.force.com/services/oauth2/token";
       let body = {
         grant_type: "authorization_code",
-        code,
+        code:code,
         client_id: process.env.REACT_APP_CLIENT_ID,
         client_secret: process.env.REACT_APP_CLIENT_SECRET,
         redirect_uri: process.env.REACT_APP_REDIRECT_URI,
@@ -43,13 +43,13 @@ const Auth = () => {
     }
       console.log("options >>>", JSON.stringify(options));
       await axios(options)
-        .then((response) => {
+        .then((response) => {debugger
           console.log("response>>>>", response);
           sessionStorage.setItem('data', JSON.stringify(sample))
           sessionStorage.setItem('token', sample.access_token)
           navigate('/csv')
         })
-        .catch((e) => {
+        .catch((e) => {debugger
           sessionStorage.setItem('data', JSON.stringify(sample))
           sessionStorage.setItem('token', sample.access_token)
           navigate('/csv')
