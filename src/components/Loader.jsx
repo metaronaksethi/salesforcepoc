@@ -1,6 +1,10 @@
 import React from 'react'
 import LoadingOverlay from 'react-loading-overlay'
-
+/**
+ * For showing loader anywhere in whole site
+ * @param {*} isActive 
+ * @returns 
+ */
 const Loader = ({ isActive }) => {
   return (
     <LoadingOverlay
